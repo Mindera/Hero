@@ -40,15 +40,15 @@ internal class HeroViewPropertyViewContext: HeroAnimatorViewContext {
     if reverse {
       viewPropertyAnimator?.stopAnimation(false)
       viewPropertyAnimator?.finishAnimation(at: .current)
-      
+
       viewPropertyAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
         visualEffectView.effect = reverse ? self.startEffect : self.endEffect
       }
-      
+
       // workaround for a bug https://openradar.appspot.com/30856746
       viewPropertyAnimator.startAnimation()
       viewPropertyAnimator.pauseAnimation()
-        
+
       viewPropertyAnimator.fractionComplete = CGFloat(1.0 - timePassed / duration)
     }
     
